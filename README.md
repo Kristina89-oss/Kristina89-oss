@@ -6,7 +6,6 @@
 ### AML / Financial-Crime Compliance · Enhanced Due Diligence · On-Chain Forensics
 
 [![Taplink](https://img.shields.io/badge/Taplink-Phenomenon-000000?style=flat-square)](https://taplink.cc/gipoteza_nule)
-[![X](https://img.shields.io/badge/X-Verai7h-000000?style=flat-square)](https://x.com/Verai7h)
 
 </div>
 
