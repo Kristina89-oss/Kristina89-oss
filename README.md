@@ -5,7 +5,6 @@
 # AI Automation Engineer
 ### LLM agents · Workflow automation · Evals · Ad ops · Medical AI
 
-[![Taplink](https://img.shields.io/badge/Taplink-Phenomenon-000000?style=flat-square)](https://taplink.cc/gipoteza_nule)
 [![Research](https://img.shields.io/badge/Research-LLM%20introspection-334155?style=flat-square)](https://github.com/Kristina89-oss/llm-introspection-experiments)
 [![Data](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.23365351-334155?style=flat-square)](https://doi.org/10.5281/zenodo.23365351)
 
