@@ -3,7 +3,7 @@
 <img src="assets/hero.gif" width="180" alt="rotating icosahedron" />
 
 # AI Automation Engineer
-### LLM agents · Workflow automation · Evals · GTM & marketing ops
+### LLM agents · Workflow automation · Evals · Ad ops · Medical AI
 
 [![Taplink](https://img.shields.io/badge/Taplink-Phenomenon-000000?style=flat-square)](https://taplink.cc/gipoteza_nule)
 [![Research](https://img.shields.io/badge/Research-LLM%20introspection-334155?style=flat-square)](https://github.com/Kristina89-oss/llm-introspection-experiments)
@@ -15,9 +15,9 @@
 
 ## What I do
 
-I build automations where an LLM does real work inside a business process — pulling data from APIs, analysing it, and handing a person a decision instead of a spreadsheet. I came from performance marketing, so I start from the process and the metric, not from the model: what has to happen, how we will know it worked, and what it costs per run.
+I build automations where an LLM does real work inside a business process — pulling data from APIs, analysing it, and handing a person a decision instead of a spreadsheet. I came from performance marketing, so I start from the process and the metric, not from the model: what has to happen, how we will know it worked, and what it costs per run. My main domain is paid ads across Yandex Direct, Meta, Google Ads and YouTube Ads; the second is medicine, where I study how agents should be trained and evaluated before they get anywhere near a clinical decision.
 
-The other half of my work is checking whether a model actually does what it seems to do. I ran 15 controlled experiments on Claude and Qwen models — hundreds of sub-agent instances, pre-registered comparisons, blind LLM-as-judge coding, LoRA fine-tuning — and published the data and code. That habit carries over to every agent I build: evals first, demos second.
+The thread through all of it is checking whether a model actually does what it seems to do. I ran 15 controlled experiments on Claude and Qwen models — hundreds of sub-agent instances, pre-registered comparisons, blind LLM-as-judge coding, LoRA fine-tuning — and published the data and code. That habit carries over to every agent I build: evals first, demos second.
 
 ---
 
@@ -38,12 +38,24 @@ Can a language model report on its own internal states — and does it have a pa
 
 ---
 
-## ⚙️ Automation work
+## ⚙️ Ad automation
 
+One pipeline across four ad platforms — **Yandex Direct · Meta Ads · Google Ads · YouTube Ads** — built around three jobs:
+
+| Job | What it does | Stack |
+|---|---|---|
+| **Statistics analysis** | Pulls campaign stats from every platform's API into one table, and a low-cost LLM writes the daily read-out: what moved, why, what to change | n8n · ad platform APIs · Google Sheets · Gemini |
+| **Competitor scoring** | Collects competitors' ads and scores them, so the next test starts from what is working in the market | n8n · LLM scoring |
+| **Creative replacement** | Spots creatives that are burning out by their metrics and swaps in or drafts the replacements | n8n · ad platform APIs · LLM |
+| **Telegram budget bot** | Watches ad spend and sends budget alerts and summaries to Telegram | n8n · Telegram Bot API |
+
+## 🩺 Medical AI
+
+How should an agent be trained and checked before it advises on treatment? I work on prostate-cancer data from [Project Data Sphere](https://www.projectdatasphere.org/): longitudinal PSA series from the control arms of 9 mCRPC trials (~4,000 patients), harmonised into one dataset, a mechanistic PSA model and patient "twins" used as a test bench for agents. The rule I hold to: a twin has to beat a trivial baseline before agents are compared with doctors on it — in the first run it did not, so that comparison was not made. Aggregate research only; nothing here is medical advice.
+
+## 🔧 Other automation
 | Project | What it does | Stack |
 |---|---|---|
-| **Ad analytics pipeline** | Pulls campaign stats from the Yandex Direct API, lands them in Google Sheets, and has a low-cost LLM write the daily analysis: what moved, why, what to change | n8n · Yandex Direct API · Google Sheets · Gemini |
-| **Telegram budget bot** | Watches ad spend and sends budget alerts and summaries to Telegram | n8n · Telegram Bot API |
 | **Local LLM parsing** | Turns unstructured text into structured fields with a local model, so data never leaves the machine | n8n · Ollama |
 | **Research orchestration** | Runs hundreds of isolated model instances per experiment, blind-codes answers with LLM judges, recomputes every statistic from raw counts | Claude Code · Python · PyTorch · PEFT/LoRA |
 
@@ -65,7 +77,7 @@ Can a language model report on its own internal states — and does it have a pa
 | Evaluation | LLM-as-judge · Blind double coding · Pre-registration · Confidence intervals · Tracing |
 | Automation | n8n · REST APIs · Webhooks · Google Sheets · Telegram bots |
 | Models | Claude · Gemini · Ollama · Qwen fine-tuning (LoRA / QLoRA) |
-| Domain | Performance marketing · Ad ops · GTM |
+| Domain | Performance marketing · Ad ops · GTM · Clinical trial data |
 
 ---
 
@@ -78,6 +90,10 @@ Can a language model report on its own internal states — and does it have a pa
 ![Python](https://img.shields.io/badge/Python-334155?style=flat-square)
 ![PyTorch](https://img.shields.io/badge/PyTorch-334155?style=flat-square)
 ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-334155?style=flat-square)
+![Yandex Direct](https://img.shields.io/badge/Yandex%20Direct-334155?style=flat-square)
+![Meta Ads](https://img.shields.io/badge/Meta%20Ads-334155?style=flat-square)
+![Google Ads](https://img.shields.io/badge/Google%20Ads-334155?style=flat-square)
+![YouTube Ads](https://img.shields.io/badge/YouTube%20Ads-334155?style=flat-square)
 ![Google Sheets](https://img.shields.io/badge/Google%20Sheets-334155?style=flat-square)
 ![Telegram](https://img.shields.io/badge/Telegram%20Bot%20API-334155?style=flat-square)
 ![Notion](https://img.shields.io/badge/Notion-334155?style=flat-square)
@@ -88,6 +104,19 @@ Can a language model report on its own internal states — and does it have a pa
 <summary>🗂️ Side projects — open-source research I do for fun</summary>
 
 <br>
+
+**🔎 [Wallet check](https://github.com/Kristina89-oss/tracing-dashboard)** — a local single-page tool for checking a crypto wallet the way an investigator would by hand: FATF-style red-flag scoring, sanctions / USDT-freeze / phishing-list screening, mixer and cross-chain bridge tracing, and OSINT from one address or tx hash. Built on my own [bridge tracer](https://github.com/Kristina89-oss/bridgetrail), [mixer heuristics](https://github.com/Kristina89-oss/mixer-tracing-tools) and API clients for [Etherscan](https://github.com/Kristina89-oss/etherscan-client) and [Chainabuse](https://github.com/Kristina89-oss/chainabuse-client).
+
+**On-chain investigations**
+
+| Case | What I found |
+|---|---|
+| **[TRON investigation writeup](https://github.com/Kristina89-oss/tron-investigation-writeup)** | How a $72M Tether freeze unravelled into a 761-address USDT laundering network — written step by step, mistakes included |
+| **[TRON/USDT laundering network](https://github.com/Kristina89-oss/tron-laundering-investigation)** | A laundering trail public reporting missed, plus a hidden bridge to a second network; FATF-scored addresses |
+| **[TRON phishing kit → USDT resale](https://github.com/Kristina89-oss/TRON-Phishing-Kit-and-USDT-Laundering-Network-)** | A fake refund site feeding a storefront that resells stolen USDT on Telegram |
+| **["TGR Exchange" cash-out scam](https://github.com/Kristina89-oss/TGR-scam-exchange-case)** | From one victim report through wallet fund flows, the ad campaign and hosting records to the operators |
+
+**OSINT databases**
 
 | Database | Covers |
 |---|---|
